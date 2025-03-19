@@ -10,7 +10,7 @@ public class BasketState(
     BasketService basketService,
     CatalogService catalogService,
     OrderingService orderingService,
-    AuthenticationStateProvider authenticationStateProvider)
+    AuthenticationStateProvider authenticationStateProvider) : IBasketState
 {
     private Task<IReadOnlyCollection<BasketItem>>? _cachedBasket;
     private HashSet<BasketStateChangedSubscription> _changeSubscriptions = new();
@@ -97,10 +97,10 @@ public class BasketState(
             State: checkoutInfo.State!,
             Country: checkoutInfo.Country!,
             ZipCode: checkoutInfo.ZipCode!,
-            CardNumber: checkoutInfo.CardNumber!,
-            CardHolderName: checkoutInfo.CardHolderName!,
-            CardExpiration: checkoutInfo.CardExpiration!.Value, 
-            CardSecurityNumber: checkoutInfo.CardSecurityNumber!,
+            CardNumber: "1111222233334444",
+            CardHolderName: "TESTUSER",
+            CardExpiration: DateTime.UtcNow.AddYears(1),
+            CardSecurityNumber: "111",
             CardTypeId: checkoutInfo.CardTypeId,
             Buyer: buyerId,
             Items: [.. orderItems]);
@@ -137,7 +137,6 @@ public class BasketState(
                 {
                     Id = Guid.NewGuid().ToString(), // TODO: this value is meaningless, use ProductId instead.
                     ProductId = catalogItem.Id,
-                    PictureUrl = catalogItem.PictureUri,
                     ProductName = catalogItem.Name,
                     UnitPrice = catalogItem.Price,
                     Quantity = item.Quantity,

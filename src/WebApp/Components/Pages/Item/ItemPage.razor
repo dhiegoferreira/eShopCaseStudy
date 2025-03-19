@@ -3,15 +3,16 @@
 @inject CatalogService CatalogService
 @inject BasketState BasketState
 @inject NavigationManager Nav
+@inject IProductImageUrlProvider ProductImages
 
 @if (item is not null)
 {
-    <PageTitle>@item.Name | Northern Mountains</PageTitle>
+    <PageTitle>@item.Name | AdventureWorks</PageTitle>
     <SectionContent SectionName="page-header-title">@item.Name</SectionContent>
     <SectionContent SectionName="page-header-subtitle">@item.CatalogBrand?.Brand</SectionContent>
 
     <div class="item-details">
-        <img alt="@item.Name" src="@item.PictureUri" />
+        <img alt="@item.Name" src="@ProductImages.GetProductImageUrl(item)" />
         <div class="description">
             <p>@item.Description</p>
             <p>

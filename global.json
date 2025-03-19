@@ -1,7 +1,7 @@
 {
   "sdk": {
-    "version": "8.0.100-rtm.23530.12",
-    "rollForward": "latestPatch",
+    "version": "9.0.200",
+    "rollForward": "latestFeature",
     "allowPrerelease": true
   }
 }

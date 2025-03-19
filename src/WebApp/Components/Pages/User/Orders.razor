@@ -3,7 +3,7 @@
 @attribute [StreamRendering]
 @inject OrderingService OrderingService
 
-<PageTitle>Orders | Northern Mountains</PageTitle>
+<PageTitle>Orders | AdventureWorks</PageTitle>
 <SectionContent SectionName="page-header-title">Orders</SectionContent>
 <OrdersRefreshOnStatusChange />
 
@@ -38,7 +38,7 @@ else
                    $@order.Total.ToString("0.00")
                 </div>
                 <div class="order-status">
-                    <span class="status @order.Status">
+                    <span class="status @order.Status.ToLower()">
                         @order.Status
                     </span>
                 </div>
